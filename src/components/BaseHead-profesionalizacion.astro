@@ -1,0 +1,28 @@
+---
+import '../style/profesionalizacion.css';
+---
+
+<div  class="BaseHead-profesionalizacion">
+  <h1>PROFESIONALIZACIÓN</h1>
+    <div class="barra">
+        <a href="/historia">Nuestra Historia</a>
+        <a href="/somos">Quiénes Somos</a>
+        <a href="/profesionalizacion">Profesionalización</a>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const links = document.querySelectorAll('.barra a');
+  const currentPath = window.location.pathname.toLowerCase();
+
+  links.forEach(link => {
+    const href = link.getAttribute('href').toLowerCase();
+
+    // activa si el href coincide con la ruta actual
+    if (href === currentPath) {
+      link.classList.add('active');
+    }
+  });
+});
+</script>

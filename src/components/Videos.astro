@@ -1,0 +1,129 @@
+---
+import '../style/video.css';
+---
+
+
+<section class="videos-seccion">
+    <!-- Bloque 1: video izquierda -->
+    <div class="video-block left">
+        <div class="video">
+            <iframe 
+                src="https://www.youtube.com/embed/xHI5-HAu4_A"
+                title="Video 1"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+        <div class="text-box">
+            <h2>DOPPIA</h2>
+            <p>
+            <strong>DOPPIA</strong> es el sistema integral, que además de contribuir a la generación de una cuenta pública armonizada con base en lo 
+            establecido en la <strong>Ley General de Contabilidad Gubernamental</strong> , permite que quien la emplea experimente una 
+            reducción considerable en los tiempos de registro de la información, mediante la gestión automática del 95% de los registros 
+            contables y presupuestales, una simplificación de los procesos indispensables, así como la disposición inmediata de base de 
+            datos a través de la emisión de reportes específicos o concentrados de información.
+            </p>
+        </div>
+    </div>
+
+    <!-- Bloque 2: video derecha -->
+    <div class="video-block right">
+        <div class="video">
+            <iframe 
+                src="https://www.youtube.com/embed/w-84gYRRtdA"
+                title="Video 2"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+        <div class="text-box-1">
+            <h2>COMPENSI</h2>
+            <p>
+            <strong>COMPENSI</strong> es una herramienta informática creada con base en la Normatividad en materia de administración del recurso humano, 
+            el control y afectación presupuestal del capítulo 1000 para cualquier tipo de ente público.  
+            En este podrás administrar al Recurso Humano, realizar el cálculo de la nómina, emitir diversos reportes, controlar los movimientos por empleado, 
+            entre muchos beneficios más.
+            </p>
+        </div>
+    </div>
+
+    <!-- Bloque 3: video izquierda -->
+    <div class="video-block left">
+        <div class="video">
+            <iframe 
+                src="https://www.youtube.com/embed/SghDCdNRsCY"
+                title="Video 3"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+        <div class="text-box">
+            <h2>RICORDI</h2>
+            <p> <strong>RICORDI</strong> es una herramienta informática que permite dar cumplimiento a la <strong>Ley General de Archivo</strong>
+            mediante una estructuración personalizada a las necesidades del cliente, mediante la digitalización, organización, resguardo y gestión de
+            documentos. Mediante Ricordi podrás hacer búsquedas ágiles de cualquier documento digital desde su nombre hasta su contenido.
+            Ricordi evitara la pérdida de información mediante la correcta gestión documental para el sector privado y gobierno.
+            </p>
+        </div>
+    </div>
+
+    <!-- Bloque 4: video derecha -->
+    <div class="video-block right">
+        <div class="video">
+            <iframe 
+                src="https://www.youtube.com/embed/WiDf9wzkUQk"
+                title="Video 4"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+        <div class="text-box-1">
+            <h2>BILANCI</h2>
+            <p> <strong>BILANCI</strong> es una herramienta informática que facilita la adopción de la Gestión para Resultados, del Presupuesto
+            Basado en Resultados y del Sistema de Evaluación del Desempeño, porque su diseño se sustenta en la Metodología del Marco Lógico (MML) para
+            el análisis de los problemas y la información requerida para una mejor toma de decisiones en el diseño de los Programas presupuestarios.
+            </p>
+        </div>
+    </div>
+
+    <!-- Bloque 5: video izquierda -->
+    <div class="video-block left">
+        <div class="video">
+            <iframe 
+                src="https://www.youtube.com/embed/ZKtzqLTi4SI"
+                title="Video 5"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+        <div class="text-box">
+            <h2>ONERI</h2>
+            <p><strong>ONERI</strong> es un sistema integral de punto de venta diseñado por <strong>LERRETI</strong>, con el propósito de optimizar la gestión operativa y administrativa de negocios de cualquier tamaño. 
+            Su principal objetivo es ofrecer una herramienta tecnológica confiable, intuitiva y eficiente que permita a las empresas controlar sus ventas, inventarios y finanzas en tiempo real, favoreciendo la toma de decisiones basadas en información precisa y actualizada.
+            El sistema combina una interfaz moderna y fácil de usar con un sólido respaldo técnico, lo que facilita su implementación tanto en establecimientos individuales como en cadenas con múltiples sucursales. 
+            Gracias a su arquitectura flexible, <strong>ONERI</strong> puede adaptarse a distintos giros comerciales —desde tiendas minoristas hasta restaurantes o farmacias— y escalar conforme crecen las necesidades del negocio. </p>
+        </div>
+    </div>
+</section>
+
+
+
+
+<script>
+    const blocks = document.querySelectorAll('.video-block');
+
+    const observer = new IntersectionObserver(entries => {
+     entries.forEach(entry => {
+        if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        }
+    });
+    }, { threshold: 0.3 });
+
+    blocks.forEach(block => observer.observe(block));
+</script>

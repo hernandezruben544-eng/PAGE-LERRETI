@@ -1,0 +1,134 @@
+.videos-seccion {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  padding: 2rem;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f5f5f5; /* color azul oscuro */
+  color: white; /* texto visible sobre fondo oscuro */
+}
+
+
+/* Mantener el contenido centrado y con ancho máximo */
+.video-block {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  max-width: 1200px;   /* Mantiene los videos y textos centrados */
+  margin: 0 auto;      /* Centra los bloques dentro de la sección */
+  opacity: 0;
+  transform: translateY(60px);
+  transition: all 0.6s ease;
+}
+
+
+/* Bloque visible al hacer scroll */
+.video-block.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Video a la izquierda, texto a la derecha */
+.video-block.left {
+  flex-direction: row;
+}
+
+/* Video a la derecha, texto a la izquierda */
+.video-block.right {
+  flex-direction: row-reverse;
+}
+
+/* Contenedor del video */
+.video {
+  flex: 0 0 600px;
+  width: 30%;
+}
+
+/* Estilo del iframe */
+.video iframe {
+  width: 500px;
+  aspect-ratio: 16 / 9;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+/* Efecto hover en el video */
+.video iframe:hover {
+  transform: scale(1.03);
+}
+
+/* Contenedor del texto */
+.text-box {
+  flex: 1;
+}
+
+.text-box-1{
+  flex: 1;
+  width: 60%;
+  text-align: end;
+}
+
+/* Título del bloque */
+.text-box-1 h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #000080;
+}
+
+/* Descripción del bloque */
+.text-box-1 p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #333;
+  text-align: justify;
+}
+
+
+
+
+/* Título del bloque */
+.text-box h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #000080;
+}
+
+/* Descripción del bloque */
+.text-box p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #333;
+  text-align: justify;
+}
+
+/* Responsive: en móviles los videos y texto se apilan */
+@media (max-width: 768px) {
+  .video-block {
+    flex-direction: column !important;
+    text-align: center;
+  }
+
+  .video iframe {
+    height: 250px;
+  }
+
+  .text-box {
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .video iframe {
+    height: 200px;
+  }
+
+  .text-box h2 {
+    font-size: 1.5rem;
+  }
+
+  .text-box p {
+    font-size: 0.95rem;
+  }
+}

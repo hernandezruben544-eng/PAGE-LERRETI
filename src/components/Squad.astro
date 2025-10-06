@@ -1,0 +1,89 @@
+---
+import '../style/squad.css';
+---
+
+<div id="squad" class="Squad">
+    <h1 class="squad-title aparecer">EQUIPO</h1>
+    <p class="squad-subtitle aparecer">El equipo ofrece más de once años de experiencia en materia de</p>
+    <div class="squad-container">
+        <p class="squad-especial visible">Contabilidad Gubernamental</p>
+        <p class="squad-especial">Presupuesto</p>
+        <p class="squad-especial">Desarrollo De Tecnologías De La Información</p>
+    </div>
+    <p class="squad-subtitle aparecer">y demás temas relacionados con el sector público y privado.</p>
+
+    <div class="squad-bloques">
+        <div class="squad-cuadro-1 left rebote">
+            <img src="Contadora-Ilse.jpg" alt="Gerente General"/>
+            <div>
+                <p class="title-general-1">L.C.P. y M.A.P.P. Ilse López Lara</p>
+                <p class="subtitle-general-1">GERENTE GENERAL</p>
+            </div>
+        </div>
+        <div class="squad-cuadro right rebote">
+            <img src="Hombre-1.jpg" alt="Subgerente de TICS"/>
+            <div>
+                <p class="title-general">I.S.C. Fernando Jiménez Moreno</p>
+                <p class="subtitle-general">SUBGERENTE DE TECNOLOGÍAS DE LA INFORMACIÓN</p>
+            </div>
+        </div>
+        <div class="squad-cuadro-1 left rebote">
+            <img src="Contadora-Ana.jpg" alt="Subgerente de contabilidad"/>
+            <div>
+                <p class="title-general-1">L.C.P. Ana Yely Pérez Pérez</p>
+                <p class="subtitle-general-1">SUBGERENTE DE CONTABILIDAD</p>
+            </div>
+        </div>
+        <div class="squad-cuadro right rebote">
+            <img src="Hombre-3.jpg" alt="Subgerente de administracion"/>
+            <div>
+                <p class="title-general">L.C.P. Eulises Hernández de Dios</p>
+                <p class="subtitle-general">SUBGERENTE DE ADMINISTRACIÓN</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+  // ---- Animación de aparición / rebote al hacer scroll ----
+  const elementos = document.querySelectorAll('.aparecer, .rebote');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible'); // activa la animación CSS
+      }
+    });
+  }, { threshold: 0.2 });
+
+  elementos.forEach(el => observer.observe(el));
+
+  // ---- Rotación automática de textos ----
+  const textos = document.querySelectorAll('.squad-especial');
+  let currentText = 0;
+
+  function showText(index) {
+    textos.forEach((p, i) => {
+      p.classList.remove('visible', 'exit');
+      if (i === index) {
+        p.classList.add('visible'); // visible al mostrar
+      } else if (i === currentText) {
+        p.classList.add('exit');    // transición de salida
+      }
+    });
+    currentText = index;
+  }
+
+  function nextText() {
+    const next = (currentText + 1) % textos.length;
+    showText(next);
+  }
+
+  // Cambia cada 8s
+  setInterval(nextText, 8000);
+
+  // Inicializar
+  showText(0);
+</script>

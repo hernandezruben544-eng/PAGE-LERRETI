@@ -1,0 +1,48 @@
+.history {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 50px 20px;
+    background-color: #f5f5f5;
+}
+
+.history-bloque {
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.history-cuadro {
+    background-color: transparent;
+    padding: 30px;
+    border: 3px solid #000080;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+.history-cuadro h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: #000080;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.history-cuadro p {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    color: #333;
+    text-align: center;
+}
+
+.history-cuadro .autor {
+  position: absolute;
+  bottom: -15px;
+  right: 15px;
+  background-color: white;
+  padding: 5px 10px;
+  font-style: italic;
+  font-weight: bold;
+  color: #000080;
+  z-index: 10;            
+}

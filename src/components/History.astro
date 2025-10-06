@@ -1,0 +1,34 @@
+---
+import '../style/history.css';
+import '../style/animaciones.css';
+---
+
+<div class="history">
+  <div class="history-bloque">
+    <div class="history-cuadro rebote">
+      <h1>Nuestros Inicios</h1>
+      <p>"Desde su fundación, hace 6 años, nuestra empresa ha sido un
+      faro de innovación y compromiso con la excelencia.
+      Nos hemos dedicado incansablemente a crear soluciones estratégicas que permitan
+      a nuestros clientes llegar a sus objetivos de una forma más fácil y automatizada,
+      con el acompañamiento de nuestros profesionales en contaduría e informática, generando
+      un impacto positivo en nuestra comunidad."</p>
+
+      <div class="autor">L.C.P Y M.A.P.P. Ilse López Lara</div>
+    </div>
+  </div>
+</div>
+
+<script>
+    const elementos = document.querySelectorAll('.aparecer, .rebote');
+
+    const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        }
+    });
+    }, { threshold: 0.2 });
+
+    elementos.forEach(el => observer.observe(el));
+</script>
