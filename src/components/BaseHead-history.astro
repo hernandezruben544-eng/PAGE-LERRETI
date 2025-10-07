@@ -2,27 +2,43 @@
 import '../style/base.css';
 ---
 
-<div  class="BaseHead-history">
+<div class="BaseHead-history">
   <h1>NUESTRA HISTORIA</h1>
-    <div class="barra">
-        <a href="/historia">Nuestra Historia</a>
-        <a href="/somos">Quiénes Somos</a>
-        <a href="/profesionalizacion">Profesionalización</a>
-    </div>
+  <div class="barra">
+    <a href="/historia/">Nuestra Historia</a>
+    <a href="/somos/">Quiénes Somos</a>
+    <a href="/profesionalizacion/">Profesionalización</a>
+  </div>
 </div>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const links = document.querySelectorAll('.BaseHead-history .barra a');
-  const currentPath = window.location.pathname; // ruta actual de la página
+  let currentPath = window.location.pathname;
+
+  // Normalizar para remover "index.html" si existe
+  if (currentPath.endsWith('index.html')) {
+    currentPath = currentPath.replace('index.html', '');
+  }
+
+  // Asegurarse de que siempre termina con "/"
+  if (!currentPath.endsWith('/')) {
+    currentPath += '/';
+  }
 
   links.forEach(link => {
-    const href = link.getAttribute('href');
+    let href = link.getAttribute('href');
 
-    // Comparar ruta del link con la ruta actual
+    // También asegurarse de que termina con "/"
+    if (!href.endsWith('/')) {
+      href += '/';
+    }
+
     if (href === currentPath) {
       link.classList.add('active');
     }
   });
 });
 </script>
+
+
