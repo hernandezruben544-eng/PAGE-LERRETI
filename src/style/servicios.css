@@ -1,6 +1,6 @@
 .BaseHead-servicios {
     position: relative;
-    background-image: url("servicios.jpg");
+    background-image: url("/images/servicios.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

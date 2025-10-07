@@ -1,7 +1,7 @@
   /* CONTENEDOR PRINCIPAL */
   .BaseHead {
     position: relative;
-    background-image: url("contadores.jpg");
+    background-image: url("/images/contadores.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
