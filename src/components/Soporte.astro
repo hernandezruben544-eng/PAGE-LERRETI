@@ -22,22 +22,49 @@ import '../style/animaciones.css';
         <div class="soporte-imagen rebote">
             <img src="/otros/CRONOGRAMA.jpg" alt="tecnico">
         </div>
-    </div>
+
+        <div class="soporte-cuadro aparecer">
+            <div class="soporte-cuadro-contenido">
+    <!-- 📝 Texto a la izquierda -->
+                <div class="soporte-cuadro-texto">
+                    <h1>Asistencia y Seguimiento en todo momento...</h1>
+                </div>
+
+                <!-- 🖼️ Imágenes a la derecha -->
+                <div class="soporte-cuadro-imagenes">
+                    <img src="/otros/soporte1.jpeg" alt="Asistencia técnica" class="soporte-loop" />
+                    <img src="/otros/soporte2.jpeg" alt="Atención remota" class="soporte-loop" />
+                </div>
+            </div>
+        </div>
 </section>
 
 
-<script>
-    const elementos = document.querySelectorAll('.aparecer, .rebote');
-
-    const observer = new IntersectionObserver(entries => {
+<script is:client>
+  const elementos = document.querySelectorAll('.aparecer, .rebote');
+  const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-        if (entry.isIntersecting) {
+      if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        }
+      }
     });
-    }, { threshold: 0.2 });
+  }, { threshold: 0.2 });
+  elementos.forEach(el => observer.observe(el));
 
-    elementos.forEach(el => observer.observe(el));
+  // 🔁 Animación en bucle para imágenes del cuadro blanco
+  const imagenes = document.querySelectorAll('.soporte-loop');
+  let index = 0;
+
+  function mostrarImagen() {
+    imagenes.forEach((img, i) => {
+      img.classList.remove('visible');
+      if (i === index) img.classList.add('visible');
+    });
+    index = (index + 1) % imagenes.length;
+  }
+
+  mostrarImagen();
+  setInterval(mostrarImagen, 5500);
 </script>
 
 
