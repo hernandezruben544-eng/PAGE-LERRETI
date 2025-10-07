@@ -1,0 +1,269 @@
+/* Importar Inter desde Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+/* Cargar Amasis MT Pro si tienes el archivo local */
+@font-face {
+  font-family: 'Amasis MT Pro';
+  src: url('../fonts/AmasisMTPro.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Variables base */
+:root {
+  --font-body: 'Amasis MT Pro', serif;
+  --font-paragraph: 'Inter', sans-serif;
+  --color-bg: #ffffff;
+  --color-text: #1a1a1a;
+}
+
+/* Reset general */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilo general del body */
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  font-size: 20px;
+}
+
+/* Títulos */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  margin-bottom: 0.5em;
+}
+
+/* Enlaces */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Solo los párrafos usan Inter */
+p {
+  font-family: var(--font-paragraph);
+  font-size: 16px; /* puedes ajustar el tamaño aquí si quieres más pequeño */
+  line-height: 1.7;
+}
+
+.footer{
+  display: flex; /* Organiza los bloques en fila */
+  align-items: center; /* alinea verticalmente */
+  justify-content: space-between;  /* Separación izquierda - derecha */
+  padding: 10px 20px; /*  Espacio Interno */
+  background-color: #000080; /* Color de fondo */
+  width: 100%;
+  }
+
+.copyright {
+    display: flex; /* Coloca Logo y texto uno al lado del otro horizontalmente */
+    align-items: center; /* Alinea Verticalmente los objetos */
+    gap: 8px; /* Espacio entre logo y texto */
+  }
+
+.copyright p {
+    margin: 0;
+    font-size: 14px;
+    color: white;
+  }
+
+.menu {
+    list-style: none; /* Quita los puntos tipicos de listas */
+    padding: 0;
+    margin: 0;
+    display: flex; /* Iconos en fila */
+    align-items: center;
+    gap: 10px; /* Separación entre logos */
+  }
+
+nav a img { 
+    transition: transform 0.2s ease;
+  }
+
+nav a:hover img {
+    transform: scale(1.1); /* Efecto al pasar el mouse */
+  }
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+.scroll-top-btn {
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.25); /* blanco difuminado */
+  backdrop-filter: blur(6px);           /* efecto glassmorphism */
+  border: 2px solid rgba(0, 0, 128, 0.3);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+  transition: background 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 15px rgba(155, 155, 155, 0.2);
+}
+
+.scroll-top-btn:hover {
+  background: rgba(0, 0, 0, 0.25);
+  transform: scale(1.1);
+}
+
+/* Flecha dentro del botón */
+.arrow-icon {
+  font-size: 24px;
+  font-weight: bold;
+  color: #000080; /* O usa "black" si quieres contraste en fondo claro */
+  line-height: 1;
+  animation: bounce-up 1.5s infinite;
+}
+
+/* Animación de rebote hacia arriba */
+@keyframes bounce-up {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+
+
+
+.notificacion-flotante {
+  position: fixed;
+  bottom: 100px;
+  left: 20px;
+  width: 240px;
+  background-color: #000080;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.notificacion-img-vertical {
+  width: 150px;
+  height: 100px;
+  object-fit: contain;
+  border-radius: 20px;
+}
+
+.notificacion-titulo {
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+}
+
+.notificacion-texto {
+  font-size: 0.9rem;
+  text-align: center;
+  color: white;
+}
+
+.boton-notificacion {
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: #000080;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem;
+  transition: color 0.3s ease;
+  background-color: white;
+  border-radius: 12px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.boton-notificacion::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background-color: rgba(0, 0, 128, 0.1);
+  transition: width 0.4s ease;
+  z-index: 0;
+}
+
+.boton-notificacion:hover::before{
+ width: 100%;
+}
+
+.boton-notificacion:hover {
+  color: #000080;
+}
+
+.boton-notificacion{
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  color: #000080;
+  background-color: white;
+}
+
+.boton-cerrar-notificacion {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 10000;
+  line-height: 1;
+  padding: 0;
+  transition: color 0.3s ease;
+  right: 20px;
+  top: 20px;
+}
+
+.boton-cerrar-notificacion:hover {
+  color:  #0091ff;
+}
+
+.boton-reabrir-notificacion {
+  position: fixed;
+  bottom: 120px;
+  left: 0;
+  z-index: 9998;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: #000080;
+  border: 2px solid rgba(0, 0, 128, 0.5);
+  border-left: none;
+  border-radius: 0 12px 12px 0;
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+.boton-reabrir-notificacion:hover {
+  background: rgba(255, 255, 255, 0.5);
+  color: #000050;
+}

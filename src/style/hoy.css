@@ -1,0 +1,53 @@
+.hoy {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 50px 20px;
+    background-color: #f5f5f5;
+}
+
+.hoy-bloque {
+    max-width: 1600px;
+    width: 60%;
+    text-align: center;
+    position: relative;
+}
+
+.hoy-bloque h1 {
+    display: flex;
+    flex-direction: column;
+    color: #000080;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    max-width: 1800px;
+    margin: 2rem auto;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.video-container iframe{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    z-index: 1;
+}
+
+.video-logo {
+    position: absolute;
+    top: 23px;
+    right: 0;
+    width: 100px;
+    height: auto;
+    z-index: 3;
+    pointer-events: none;
+}
