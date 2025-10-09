@@ -75,6 +75,7 @@
 /* Botón */
 .btn-leer {
   background-color: #000080;
+  font-family: 'Open Sans', sans-serif;
   color: #fff;
   border: none;
   padding: 0.8rem 1.6rem;
@@ -162,4 +163,10 @@
     font-size: 0.95rem;
     max-width: 200px;
   }
+}
+
+
+
+html {
+  scroll-behavior: smooth;
 }

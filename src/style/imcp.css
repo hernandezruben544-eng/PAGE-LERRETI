@@ -58,36 +58,15 @@
   flex: 1 1 50%;
   display: flex;
   flex-direction: column;
-  gap: 15px;
 }
 
 .imcp-subtitulo {
-  color: #4e7b41;
-  font-weight: 600;
-  font-size: 2.5rem;
-  text-transform: uppercase;
-}
-
-.imcp-subtitulo-1 {
-  color: #e43d41;
-  font-weight: 600;
-  font-size: 2.5rem;
-}
-
-
-.imcp-subtitulo-2 {
   color: #000080;
   font-weight: 600;
   font-size: 2.5rem;
+  line-height: 1.4;
 }
 
-
-.imcp-subtitulo-3 {
-  color: #000080;
-  font-weight: 600;
-  font-size: 2.5rem;
-  text-transform: uppercase;
-}
 
 
 .imcp-info p {
@@ -124,15 +103,18 @@
   box-shadow: 0 6px 25px rgba(0,0,0,0.1);
 }
 
-.imcp-final-texto {
+.imcp-final {
   margin-top: 25px;
   max-width: 1200px;         /* Igual que el contenedor principal */
   margin-left: auto;
   margin-right: auto;
-  font-size: 1.5rem;
-  line-height: 2;
   color: #000080;
-  font-weight: 500;
   text-align: justify;       /* Justifica el texto */
   padding: 0 20px;           /* Espaciado lateral */
 }
+
+.imcp-final p {
+  font-size: 1.5rem;
+  line-height: 1.4;
+}
+

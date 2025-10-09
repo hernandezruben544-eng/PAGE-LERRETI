@@ -69,12 +69,41 @@
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  background: white;
+  background-image: url("SOPORTE.jpeg");
+  background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 1rem;
 }
+
+.icono-circular-1 {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-image: url("/otros/soporte1.jpeg");
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+
+.icono-circular-2 {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-image: url("BILANCI.png");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+
+
 
 .icono-circular img {
   width: 80px;
