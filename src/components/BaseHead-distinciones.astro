@@ -1,0 +1,27 @@
+---
+import '../style/distinciones.css';
+---
+
+<div  class="BaseHead-distinciones">
+  <h1>CERTIFICACIONES & MEMBRESÍAS</h1>
+    <div class="barra">
+        <a href="/Distinciones">Distinciones</a>
+    </div>
+</div>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const links = document.querySelectorAll('.BaseHead-distinciones .barra a');
+  const currentPath = window.location.pathname; // ruta actual de la página
+
+  links.forEach(link => {
+    const href = link.getAttribute('href');
+
+    // Comparar ruta del link con la ruta actual
+    if (href === currentPath) {
+      link.classList.add('active');
+    }
+  });
+});
+</script>

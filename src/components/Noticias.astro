@@ -1,0 +1,83 @@
+---
+import '../style/noticias.css';
+---
+
+<section class="noticias-slider">
+  <!-- Slide 1 -->
+  <div class="noticias-slide active">
+    <video class="noticias-video" autoplay muted loop playsinline>
+      <source src="/videos/concilio-video.mp4" type="video/mp4" />
+      Tu navegador no soporta el video.
+    </video>
+    <div class="overlay"></div>
+    <div class="noticias-content">
+      <h1>XXXVIII CONVENCIÓN REGIONAL CENTRO ISTMO PENINSULAR 2025</h1>
+      <p></p>
+      <button class="btn-leer">Leer más</button>
+    </div>
+  </div>
+
+  <!-- Slide 2 -->
+  <div class="noticias-slide">
+    <video class="noticias-video" autoplay muted loop playsinline>
+      <source src="/videos/LerretiImcp.mp4" type="video/mp4" />
+      Tu navegador no soporta el video.
+    </video>
+    <div class="overlay"></div>
+    <div class="noticias-content">
+      <h1>LERRETI trabaja mano a mano con IMCP Tabasco en capacitación y actualización profesional del gremio.</h1>
+      <p></p>
+      <button class="btn-leer">Leer más</button>
+    </div>
+  </div>
+
+  <!-- 🔁 Barra interactiva única (aplica a ambos slides) -->
+  <div class="barra-interactiva">
+    <div class="barra-item active" data-title="XXXVIII CONVENCIÓN REGIONAL CENTRO ISTMO PENINSULAR." data-desc="Innovando juntos para ofrecer soluciones tecnológicas confiables.">
+      <strong>Asistencia y participación activa de LERRETI.</strong>
+    </div>
+    <div class="barra-item" data-title="Soluciones a medida" data-desc="Desarrollamos tecnología adaptada a las necesidades de cada cliente.">
+      Soluciones a medida
+    </div>
+    <div class="barra-item" data-title="Innovación constante" data-desc="Nos mantenemos a la vanguardia con herramientas modernas y seguras.">
+      Innovación constante
+    </div>
+  </div>
+</section>
+
+<script>
+  const slides = document.querySelectorAll('.noticias-slide');
+  const barraItems = document.querySelectorAll('.barra-item');
+  let currentSlide = 0;
+
+  function showSlide(index) {
+    slides.forEach(s => s.classList.remove('active'));
+    slides[index].classList.add('active');
+    currentSlide = index;
+  }
+
+  // Cambio automático de slide cada 10 segundos
+  setInterval(() => {
+    let nextSlide = (currentSlide + 1) % slides.length;
+    showSlide(nextSlide);
+  }, 10000);
+
+  // Interactividad barra
+  const currentTitle = document.querySelector('.noticias-slide.active h1');
+  const currentDesc = document.querySelector('.noticias-slide.active p');
+
+  barraItems.forEach((item) => {
+    item.addEventListener('click', () => {
+      barraItems.forEach(b => b.classList.remove('active'));
+      item.classList.add('active');
+
+      // Actualizar texto dentro del slide activo
+      const activeSlide = document.querySelector('.noticias-slide.active');
+      const title = activeSlide.querySelector('h1');
+      const desc = activeSlide.querySelector('p');
+
+      title.textContent = item.dataset.title;
+      desc.textContent = item.dataset.desc;
+    });
+  });
+</script>
