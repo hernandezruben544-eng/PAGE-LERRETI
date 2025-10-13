@@ -10,6 +10,14 @@
   padding: 0 2rem;
   background: transparent; /* sin fondo */
   z-index: 1000;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.simple-header:not(.visible) {
+  transform: translateY(-100%);
+  opacity: 0;
 }
 
 /* FIGURA CON LOGO */

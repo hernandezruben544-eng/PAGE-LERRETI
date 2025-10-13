@@ -136,69 +136,6 @@
   margin: 0 auto;
 }
 
-.btn-nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: #000080;
-  color: #fff;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-  animation: blink 1.5s infinite;
-  z-index: 10; /* Más alto que el cuadro */
-}
-
-.btn-nav:hover {
-  background-color: #000080;
-}
-
-.btn-prev {
-  left: -60px; /* A la izquierda del cuadro */
-}
-
-.btn-next {
-  right: -60px; /* A la derecha del cuadro */
-}
-
-
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.3; }
-}
-
-.btn-nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: #0000cc;
-  color: #fff;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-  z-index: 10;
-  animation: blink 1.5s infinite; /* 👈 aquí el parpadeo */
-}
-
-.btn-nav:hover {
-  background-color: #000080;
-  animation: none; /* 👈 se detiene el parpadeo al pasar el mouse */
-}
-
-.btn-prev {
-  left: -60px;
-}
-
-.btn-next {
-  right: -60px;
-}
-
 
 .btn-más {
   position: absolute;

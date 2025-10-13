@@ -118,3 +118,72 @@
   line-height: 1.4;
 }
 
+.imcp-imagen-slider {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  height: 350px;  /* altura fija y uniforme */
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+/* Animación en bucle */
+.imcp-imagen-slider img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* cubre el espacio para horizontales */
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+  animation: fadeCycle 20s infinite;
+}
+
+/* Imágenes verticales (por proporción detectada con clase opcional) */
+.imcp-imagen-slider img.vertical {
+  object-fit: contain; /* mantiene proporciones verticales */
+  background-color: #f1f1f1; /* fondo neutro */
+}
+
+/* Delays según número total de imágenes */
+.imcp-imagen-slider img:nth-child(1) { animation-delay: 0s; }
+.imcp-imagen-slider img:nth-child(2) { animation-delay: 4s; }
+.imcp-imagen-slider img:nth-child(3) { animation-delay: 8s; }
+.imcp-imagen-slider img:nth-child(4) { animation-delay: 12s; }
+.imcp-imagen-slider img:nth-child(5) { animation-delay: 16s; }
+
+@keyframes fadeCycle {
+  0%, 20% { opacity: 1; }
+  25%, 100% { opacity: 0; }
+}
+
+/* 🔹 Para sliders con solo 2 imágenes */
+.imcp-imagen-slider.tres img {
+  animation: fadeCycle2 8s infinite;
+}
+
+.imcp-imagen-slider.tres img:nth-child(1) { animation-delay: 0s; }
+.imcp-imagen-slider.tres img:nth-child(2) { animation-delay: 4s; }
+
+@keyframes fadeCycle2 {
+  0%, 50% { opacity: 1; }
+  60%, 100% { opacity: 0; }
+}
+
+
+
+
+/* 🔹 Para sliders con solo 2 imágenes */
+.imcp-imagen-slider.dos img {
+  animation: fadeCycle2 12s infinite;
+}
+
+.imcp-imagen-slider.dos img:nth-child(1) { animation-delay: 0s; }
+.imcp-imagen-slider.dos img:nth-child(2) { animation-delay: 4s; }
+.imcp-imagen-slider.dos img:nth-child(3) { animation-delay: 8s; }
+.imcp-imagen-slider.dos img:nth-child(4) { animation-delay: 12s; }
+
+@keyframes fadeCycle2 {
+  0%, 50% { opacity: 1; }
+  60%, 100% { opacity: 0; }
+}

@@ -10,11 +10,6 @@ import '../style/noticias.css';
       Tu navegador no soporta el video.
     </video>
     <div class="overlay"></div>
-    <div class="noticias-content">
-      <h1>XXXVIII CONVENCIÓN REGIONAL CENTRO ISTMO PENINSULAR 2025</h1>
-      <p></p>
-      <a href="#convencion" class="btn-leer">Leer más</a>
-    </div>
   </div>
 
   <!-- Slide 2 -->
@@ -24,60 +19,83 @@ import '../style/noticias.css';
       Tu navegador no soporta el video.
     </video>
     <div class="overlay"></div>
-    <div class="noticias-content">
-      <h1>LERRETI trabaja mano a mano con IMCP Tabasco en capacitación y actualización profesional del gremio.</h1>
-      <p></p>
-      <a href="#imcp" class="btn-leer">Leer más</a>
-    </div>
   </div>
 
-  <!-- 🔁 Barra interactiva única (aplica a ambos slides) -->
+  <!-- Barra interactiva -->
   <div class="barra-interactiva">
-    <div class="barra-item active" data-title="XXXVIII CONVENCIÓN REGIONAL CENTRO ISTMO PENINSULAR." data-desc="Innovando juntos para ofrecer soluciones tecnológicas confiables.">
+    <div class="barra-item active" data-title="XXXVIII CONVENCIÓN REGIONAL CENTRO ISTMO PENINSULAR." data-target="#convencion" >
       <strong>Asistencia y participación activa de LERRETI.</strong>
     </div>
-    <div class="barra-item" data-title="Soluciones a medida" data-desc="Desarrollamos tecnología adaptada a las necesidades de cada cliente.">
-      Soluciones a medida
-    </div>
-    <div class="barra-item" data-title="Innovación constante" data-desc="Nos mantenemos a la vanguardia con herramientas modernas y seguras.">
-      Innovación constante
+    <div class="barra-item" data-title="LERRETI trabaja mano a mano con IMCP Tabasco en capacitación y actualización profesional del gremio." data-target="#imcp">
+      <strong>LERRETI Trabaja mano a mano con IMCP Tabasco.</strong>
     </div>
   </div>
 </section>
 
 <script>
-  const slides = document.querySelectorAll('.noticias-slide');
-  const barraItems = document.querySelectorAll('.barra-item');
-  let currentSlide = 0;
+const slides = document.querySelectorAll('.noticias-slide');
+const barraItems = document.querySelectorAll('.barra-item');
+let currentSlide = 0;
 
-  function showSlide(index) {
-    slides.forEach(s => s.classList.remove('active'));
-    slides[index].classList.add('active');
-    currentSlide = index;
+function showSlide(index) {
+  // Activar slide
+  slides.forEach(s => s.classList.remove('active'));
+  slides[index].classList.add('active');
+
+  // Activar barra
+  barraItems.forEach(b => b.classList.remove('active'));
+  if (barraItems[index]) barraItems[index].classList.add('active');
+
+  let activeSlide = slides[index];
+  let existingContent = activeSlide.querySelector('.noticias-content');
+
+  if (!existingContent) {
+    existingContent = document.createElement('div');
+    existingContent.classList.add('noticias-content');
+    activeSlide.appendChild(existingContent);
   }
 
-  // Cambio automático de slide cada 10 segundos
-  setInterval(() => {
-    let nextSlide = (currentSlide + 1) % slides.length;
-    showSlide(nextSlide);
-  }, 10000);
+  // Fade out antes de actualizar
+  existingContent.style.opacity = 0;
 
-  // Interactividad barra
-  const currentTitle = document.querySelector('.noticias-slide.active h1');
-  const currentDesc = document.querySelector('.noticias-slide.active p');
+  setTimeout(() => {
+    // Obtener título, descripción y target del slide
+    const title = barraItems[index].dataset.title || '';
+    const desc = barraItems[index].dataset.desc || '';
+    const target = barraItems[index].dataset.target || '#imcp';
 
-  barraItems.forEach((item) => {
-    item.addEventListener('click', () => {
-      barraItems.forEach(b => b.classList.remove('active'));
-      item.classList.add('active');
+    // Actualizar contenido
+    existingContent.innerHTML = `
+      <h1>${title}</h1>
+      ${desc ? `<p>${desc}</p>` : ''}
+      <a href="${target}" class="btn-leer">Leer más</a>
+    `;
 
-      // Actualizar texto dentro del slide activo
-      const activeSlide = document.querySelector('.noticias-slide.active');
-      const title = activeSlide.querySelector('h1');
-      const desc = activeSlide.querySelector('p');
+    // Fade in
+    existingContent.style.opacity = 1;
 
-      title.textContent = item.dataset.title;
-      desc.textContent = item.dataset.desc;
+    // Scroll suave al hacer clic
+    const btnLeer = existingContent.querySelector('.btn-leer');
+    btnLeer.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector(target).scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
-  });
+
+    currentSlide = index;
+  }, 100); // Ajusta el tiempo del fade si quieres
+}
+
+// Inicializar primer slide
+showSlide(0);
+
+// Cambio automático cada 20 segundos
+setInterval(() => {
+  let nextSlide = (currentSlide + 1) % slides.length;
+  showSlide(nextSlide);
+}, 20000);
+
+// Barra interactiva
+barraItems.forEach((item, index) => {
+  item.addEventListener('click', () => showSlide(index));
+});
 </script>

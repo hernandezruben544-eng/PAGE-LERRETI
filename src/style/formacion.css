@@ -70,3 +70,8 @@
     margin-top: 0;
     object-fit: cover;
 }
+
+
+html {
+  scroll-behavior: smooth;
+}

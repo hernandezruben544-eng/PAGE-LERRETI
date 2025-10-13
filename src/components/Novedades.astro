@@ -3,11 +3,6 @@ import '../style/novedades.css';
 ---
 <section id="novedades" class="NOVEDADES">
 
-  <div class="cuadro-con-botones">
-    <!-- Botón izquierdo -->
-    <button class="btn-nav btn-prev">&#8592;</button>
-
-    <!-- CUADRO de novedades -->
     <div class="CUADRO">
       <div class="item-novedad visible" data-img="contador.jpg">
         <div class="corte-imagen"></div>
@@ -48,7 +43,7 @@ import '../style/novedades.css';
       <div class="item-novedad" data-img="BILANCI.png">
         <div class="corte-imagen"></div>
         <div class="contenido-novedad">
-          <h1>CONOCE A BILANCI<h1>
+          <h1>CONOCE A BILANCI</h1>
           <p>Gestión de resultados...</p>
         </div>
         <a href="/herramientas" class="btn-más">Conocer más</a>
@@ -67,10 +62,6 @@ import '../style/novedades.css';
         </div>
       </div>
     </div>
-
-    <!-- Botón derecho -->
-    <button class="btn-nav btn-next">&#8594;</button>
-  </div>
 </section>
 
 
@@ -79,6 +70,8 @@ import '../style/novedades.css';
   const items = document.querySelectorAll('.item-novedad');
   const prevBtn = document.querySelector('.btn-prev');
   const nextBtn = document.querySelector('.btn-next');
+  const barraItems = document.querySelectorAll('#barra-novedades .Mensaje');
+  const linea = document.querySelector('.linea-azul');
   let current = 0;
   let interval;
 
@@ -97,18 +90,31 @@ import '../style/novedades.css';
         item.classList.add('visible');
       }
 
-      // --- Aquí agregamos soporte al hover ---
+      // Soporte al hover para items especiales
       const overlayBtn = item.querySelector('.overlay-btn');
       if (overlayBtn) {
         const hoverImg = overlayBtn.dataset.hoverImg;
         if (hoverImg) {
-          // Creamos estilo dinámico para el pseudo-elemento ::after
           overlayBtn.style.setProperty('--hover-img', `url('${hoverImg}')`);
         }
       }
     });
 
     current = index;
+    actualizarLinea(index); // sincroniza barra azul
+  }
+
+  // Función para actualizar la línea azul en la barra
+  function actualizarLinea(index) {
+    barraItems.forEach(item => item.classList.remove('active'));
+    const activo = barraItems[index];
+    if (!activo) return;
+    activo.classList.add('active');
+
+    const ancho = activo.offsetWidth;
+    const izquierda = activo.offsetLeft;
+    linea.style.width = ancho + 'px';
+    linea.style.left = izquierda + 'px';
   }
 
   // Función para siguiente item
@@ -134,18 +140,13 @@ import '../style/novedades.css';
     startAutoCycle();
   }
 
-  // Eventos de los botones
-  if (prevBtn && nextBtn) {
-    prevBtn.addEventListener('click', () => {
-      prevItem();
+  // Permitir click en la barra para cambiar slider
+  barraItems.forEach((item, i) => {
+    item.addEventListener('click', () => {
+      showItem(i);
       resetCycle();
     });
-
-    nextBtn.addEventListener('click', () => {
-      nextItem();
-      resetCycle();
-    });
-  }
+  });
 
   // Inicializar al cargar
   window.addEventListener('load', () => {
