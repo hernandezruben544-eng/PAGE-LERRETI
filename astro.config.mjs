@@ -1,8 +1,8 @@
-// @ts-check
+// astro.config.mjs
 import { defineConfig } from 'astro/config';
 
-
 export default defineConfig({
-  site: 'https://hernandezruben544-eng.github.io/PAGE-LERRETI/',
-  base: '/PAGE-LERRETI/',
+  site: 'https://page-lerreti-hernandezruben544-engs-projects.vercel.app',
+  base: '/', // Muy importante: raíz del dominio
 });
+
