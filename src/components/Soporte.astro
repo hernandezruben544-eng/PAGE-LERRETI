@@ -1,0 +1,70 @@
+---
+import '../style/soporte.css';
+import '../style/animaciones.css';
+---
+
+<section id="soporte" class="soporte">
+    <div class="soporte-bloque">
+        
+        <h1 class="soporte-titulo-cuadro aparecer">SOPORTE TÉCNICO</h1>
+
+        <!-- Texto debajo del logo -->
+        <div class="soporte-texto aparecer">
+            <p class="formacion-descripcion">
+                Este
+                <strong>servicio</strong>
+                consiste en la asistencia administrativa y soporte informático remoto
+                en relación con los sistemas comercializados por <strong>LERRETI</strong> , dentro de los cuales se encuentran:
+            </p>
+        </div>
+
+        <!-- Imagen debajo de todo -->
+        <div class="soporte-imagen rebote">
+            <img src="/otros/CRONOGRAMA.jpg" alt="tecnico">
+        </div>
+
+        <div class="soporte-cuadro aparecer">
+            <div class="soporte-cuadro-contenido">
+    <!-- 📝 Texto a la izquierda -->
+                <div class="soporte-cuadro-texto">
+                    <h1>Asistencia y Seguimiento en todo momento...</h1>
+                </div>
+
+                <!-- 🖼️ Imágenes a la derecha -->
+                <div class="soporte-cuadro-imagenes">
+                    <img src="/otros/soporte1.jpeg" alt="Asistencia técnica" class="soporte-loop" />
+                    <img src="/otros/soporte2.jpeg" alt="Atención remota" class="soporte-loop" />
+                </div>
+            </div>
+        </div>
+</section>
+
+
+<script is:client>
+  const elementos = document.querySelectorAll('.aparecer, .rebote');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.2 });
+  elementos.forEach(el => observer.observe(el));
+
+  // 🔁 Animación en bucle para imágenes del cuadro blanco
+  const imagenes = document.querySelectorAll('.soporte-loop');
+  let index = 0;
+
+  function mostrarImagen() {
+    imagenes.forEach((img, i) => {
+      img.classList.remove('visible');
+      if (i === index) img.classList.add('visible');
+    });
+    index = (index + 1) % imagenes.length;
+  }
+
+  mostrarImagen();
+  setInterval(mostrarImagen, 5500);
+</script>
+
+

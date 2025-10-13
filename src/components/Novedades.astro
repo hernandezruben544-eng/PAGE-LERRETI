@@ -1,0 +1,156 @@
+---
+import '../style/novedades.css';
+---
+<section id="novedades" class="NOVEDADES">
+
+    <div class="CUADRO">
+      <div class="item-novedad visible" data-img="contador.jpg">
+        <div class="corte-imagen"></div>
+        <div class="contenido-novedad">
+          <h1>LERRETI</h1>
+          <p>Brindamos asesorías en el área contable, presupuestal, de aplicación de TIC's,
+          administrativa, de auditoría entre otros rubros, para los ámbitos empresarial y gubernamental.</p>
+        </div>
+      </div>
+
+      <div class="item-novedad" data-img="MISION.jpg">
+        <div class="corte-imagen"></div>
+        <div class="contenido-novedad">
+          <h1>MISIÓN</h1>
+          <p>Brindar cada uno de nuestros servicios de calidad superior, mediante la atención
+          personalizada y la preparación profesional continua.</p>
+        </div>
+      </div>
+
+      <div class="item-novedad" data-img="VISION.jpg">
+        <div class="corte-imagen"></div>
+        <div class="contenido-novedad">
+          <h1>VISIÓN</h1>
+          <p>Transformar el control y seguimiento de los datos mediante la creación de nuevas
+          tecnologías para el sector público y privado, expandiendo nuestro liderazgo nacional para
+          servir mejor a más clientes.</p>
+        </div>
+      </div>
+
+      <div class="item-novedad" data-img="DOPPIA-1.png">
+        <div class="corte-imagen"></div>
+        <div class="contenido-novedad">
+          <h1>CONOCE A DOPPIA</h1>
+          <p>Cuenta pública armonizada y más...</p>
+        </div>
+        <a href="/herramientas" class="btn-más">Conocer más</a>
+      </div>
+      <div class="item-novedad" data-img="BILANCI.png">
+        <div class="corte-imagen"></div>
+        <div class="contenido-novedad">
+          <h1>CONOCE A BILANCI</h1>
+          <p>Gestión de resultados...</p>
+        </div>
+        <a href="/herramientas" class="btn-más">Conocer más</a>
+      </div>
+      <div class="item-novedad especial" data-img="IMCP.jpeg">
+        <div class="corte-imagen">
+        <a href="/Distinciones"
+          class="overlay-btn"
+          data-hover-img="/otros/COMPARTIR.jpg"
+        ></a>
+        </div>
+        <div class="contenido-novedad">
+          <h1>CERTIFICACIONES & MEMBRESÍAS</h1>
+          <span class="bold">Intituto Mexicano de Contadores Públicos de Tabasco</span>
+          <p>Socios y colaboradores miembros activos del Instituto Mexicano de Contadores Públicos Tabasco.</p>
+        </div>
+      </div>
+    </div>
+</section>
+
+
+
+<script>
+  const items = document.querySelectorAll('.item-novedad');
+  const prevBtn = document.querySelector('.btn-prev');
+  const nextBtn = document.querySelector('.btn-next');
+  const barraItems = document.querySelectorAll('#barra-novedades .Mensaje');
+  const linea = document.querySelector('.linea-azul');
+  let current = 0;
+  let interval;
+
+  // Mostrar el slide en una posición específica
+  function showItem(index) {
+    items.forEach((item, i) => {
+      const imgDiv = item.querySelector('.corte-imagen');
+      const bg = item.dataset.img;
+
+      // Aplica el fondo a cada item
+      imgDiv.style.backgroundImage = `url('${bg}')`;
+
+      // Control de visibilidad
+      item.classList.remove('visible');
+      if (i === index) {
+        item.classList.add('visible');
+      }
+
+      // Soporte al hover para items especiales
+      const overlayBtn = item.querySelector('.overlay-btn');
+      if (overlayBtn) {
+        const hoverImg = overlayBtn.dataset.hoverImg;
+        if (hoverImg) {
+          overlayBtn.style.setProperty('--hover-img', `url('${hoverImg}')`);
+        }
+      }
+    });
+
+    current = index;
+    actualizarLinea(index); // sincroniza barra azul
+  }
+
+  // Función para actualizar la línea azul en la barra
+  function actualizarLinea(index) {
+    barraItems.forEach(item => item.classList.remove('active'));
+    const activo = barraItems[index];
+    if (!activo) return;
+    activo.classList.add('active');
+
+    const ancho = activo.offsetWidth;
+    const izquierda = activo.offsetLeft;
+    linea.style.width = ancho + 'px';
+    linea.style.left = izquierda + 'px';
+  }
+
+  // Función para siguiente item
+  function nextItem() {
+    const next = (current + 1) % items.length;
+    showItem(next);
+  }
+
+  // Función para anterior item
+  function prevItem() {
+    const prev = (current - 1 + items.length) % items.length;
+    showItem(prev);
+  }
+
+  // Inicia el ciclo automático
+  function startAutoCycle() {
+    interval = setInterval(nextItem, 6000);
+  }
+
+  // Reinicia el ciclo (cuando se hace clic manual)
+  function resetCycle() {
+    clearInterval(interval);
+    startAutoCycle();
+  }
+
+  // Permitir click en la barra para cambiar slider
+  barraItems.forEach((item, i) => {
+    item.addEventListener('click', () => {
+      showItem(i);
+      resetCycle();
+    });
+  });
+
+  // Inicializar al cargar
+  window.addEventListener('load', () => {
+    showItem(0);
+    startAutoCycle();
+  });
+</script>

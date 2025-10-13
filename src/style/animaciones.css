@@ -1,0 +1,41 @@
+/* Estado inicial (oculto) */
+.aparecer {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Estado visible (cuando entra en pantalla) */
+.aparecer.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+.rebote {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.rebote.visible {
+  animation: rebotar 0.8s forwards;
+}
+
+/* Keyframes */
+@keyframes rebotar {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  80% {
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;       /* 🔹 Importante: mantener visible */
+    transform: scale(1);
+  }
+}

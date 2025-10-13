@@ -1,0 +1,38 @@
+---
+import '../style/clientes.css';
+import '../style/animaciones.css';
+---
+
+<div class="clientes">
+    <div class="clientes-bloque aparecer">
+        <h1>Algunos de nuestros clientes...</h1>
+        <div class="clientes-contenido">
+            <div class="Listado">
+                <p>CECYTE</p>
+                <p>YUMKA</p>
+                <p>IEPC</p>
+                <p>CONALEP</p>
+                <p>IPCEP</p>
+                <p>FOCOTAB</p>
+            </div>
+            <div class="clientes-cuadro rebote">
+                <img src="/otros/CLIENTES.jpg" alt="Clientes">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    const elementos = document.querySelectorAll('.aparecer, .rebote');
+
+    const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        }
+    });
+    }, { threshold: 0.2 });
+
+    elementos.forEach(el => observer.observe(el));
+</script>

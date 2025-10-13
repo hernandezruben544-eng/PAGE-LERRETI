@@ -1,0 +1,101 @@
+---
+import '../style/noticias.css';
+---
+
+<section class="noticias-slider">
+  <!-- Slide 1 -->
+  <div class="noticias-slide active">
+    <video class="noticias-video" autoplay muted loop playsinline>
+      <source src="/videos/concilio-video.mp4" type="video/mp4" />
+      Tu navegador no soporta el video.
+    </video>
+    <div class="overlay"></div>
+  </div>
+
+  <!-- Slide 2 -->
+  <div class="noticias-slide">
+    <video class="noticias-video" autoplay muted loop playsinline>
+      <source src="/videos/LerretiImcp.mp4" type="video/mp4" />
+      Tu navegador no soporta el video.
+    </video>
+    <div class="overlay"></div>
+  </div>
+
+  <!-- Barra interactiva -->
+  <div class="barra-interactiva">
+    <div class="barra-item active" data-title="XXXVIII CONVENCIÓN REGIONAL CENTRO ISTMO PENINSULAR." data-target="#convencion" >
+      <strong>Asistencia y participación activa de LERRETI.</strong>
+    </div>
+    <div class="barra-item" data-title="LERRETI trabaja mano a mano con IMCP Tabasco en capacitación y actualización profesional del gremio." data-target="#imcp">
+      <strong>LERRETI Trabaja mano a mano con IMCP Tabasco.</strong>
+    </div>
+  </div>
+</section>
+
+<script>
+const slides = document.querySelectorAll('.noticias-slide');
+const barraItems = document.querySelectorAll('.barra-item');
+let currentSlide = 0;
+
+function showSlide(index) {
+  // Activar slide
+  slides.forEach(s => s.classList.remove('active'));
+  slides[index].classList.add('active');
+
+  // Activar barra
+  barraItems.forEach(b => b.classList.remove('active'));
+  if (barraItems[index]) barraItems[index].classList.add('active');
+
+  let activeSlide = slides[index];
+  let existingContent = activeSlide.querySelector('.noticias-content');
+
+  if (!existingContent) {
+    existingContent = document.createElement('div');
+    existingContent.classList.add('noticias-content');
+    activeSlide.appendChild(existingContent);
+  }
+
+  // Fade out antes de actualizar
+  existingContent.style.opacity = 0;
+
+  setTimeout(() => {
+    // Obtener título, descripción y target del slide
+    const title = barraItems[index].dataset.title || '';
+    const desc = barraItems[index].dataset.desc || '';
+    const target = barraItems[index].dataset.target || '#imcp';
+
+    // Actualizar contenido
+    existingContent.innerHTML = `
+      <h1>${title}</h1>
+      ${desc ? `<p>${desc}</p>` : ''}
+      <a href="${target}" class="btn-leer">Leer más</a>
+    `;
+
+    // Fade in
+    existingContent.style.opacity = 1;
+
+    // Scroll suave al hacer clic
+    const btnLeer = existingContent.querySelector('.btn-leer');
+    btnLeer.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector(target).scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+
+    currentSlide = index;
+  }, 100); // Ajusta el tiempo del fade si quieres
+}
+
+// Inicializar primer slide
+showSlide(0);
+
+// Cambio automático cada 20 segundos
+setInterval(() => {
+  let nextSlide = (currentSlide + 1) % slides.length;
+  showSlide(nextSlide);
+}, 20000);
+
+// Barra interactiva
+barraItems.forEach((item, index) => {
+  item.addEventListener('click', () => showSlide(index));
+});
+</script>

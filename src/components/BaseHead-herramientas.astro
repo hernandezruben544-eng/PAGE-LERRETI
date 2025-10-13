@@ -1,0 +1,28 @@
+---
+import '../style/herramientas.css';
+---
+
+<div  class="BaseHead-herramientas">
+  <h1>HERRAMIENTAS</h1>
+    <div class="barra">
+        <a href="/herramientas">Herramientas</a>
+        <a href="/servicios">Servicios</a>
+    </div>
+</div>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const links = document.querySelectorAll('.BaseHead-herramientas .barra a');
+  const currentPath = window.location.pathname; // ruta actual de la página
+
+  links.forEach(link => {
+    const href = link.getAttribute('href');
+
+    // Comparar ruta del link con la ruta actual
+    if (href === currentPath) {
+      link.classList.add('active');
+    }
+  });
+});
+</script>

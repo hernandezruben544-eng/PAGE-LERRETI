@@ -1,0 +1,155 @@
+#service {
+  scroll-margin-top: 120px;
+}
+
+.Service {
+  position: relative;
+  width: 100%;
+  padding: 120px 2rem 4rem;
+  background-color: #f5f5f5;
+  color: #fff;
+  text-align: center;
+  box-shadow: 0 -8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.Service.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.service-title {
+  font-size: 2.8rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #000080;
+}
+
+.service-subtitle {
+  font-size: 1.2rem;
+  color: #000080;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+}
+
+.servicio-bloques {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+/* ==== CUADRO DE SERVICIO ==== */
+.cuadro-servicio {
+  width: 320px;
+  padding: 2rem;
+  padding-bottom: 3.5rem; /* espacio para el botón */
+  border-radius: 20px;
+  color: white;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.Service.visible .cuadro-servicio {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Contenido centrado */
+.contenido-servicio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex-grow: 1;
+}
+
+/* Icono circular blanco */
+.icono-circular {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-image: url("SOPORTE.jpeg");
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.icono-circular-1 {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-image: url("/otros/soporte1.jpeg");
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+
+.icono-circular-2 {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-image: url("BILANCI.png");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+
+
+
+.icono-circular img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.titulo-servicio {
+  font-size: 1.3rem;
+  font-weight: bold;
+  font-family: 'Courier New', Courier, monospace;
+  line-height: 1.1;
+  margin: 1rem 0 0.5rem;
+  color: white;
+}
+
+.texto-servicio {
+  font-size: 1rem;
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+  margin-bottom: 0;
+}
+
+/* Botón inferior izquierda */
+.btn-conocer-mas {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 2rem;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+  z-index: 10;
+}
+
+.btn-conocer-mas:hover {
+  color: #ccc;
+}
+
+/* Colores */
+.formacion-bg,
+.soporte-bg,
+.software-bg {
+  background-color: #000080;
+}

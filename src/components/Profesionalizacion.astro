@@ -1,0 +1,35 @@
+---
+import '../style/contenido.css';
+import '../style/animaciones.css';
+---
+
+<div class="profesionalizacion">
+    <div class="profesionalizacion-bloque">
+        <div class="profesionalizacion-imagen rebote">
+            <img src="/otros/profesionalizacion.jpg" alt="PROFESIONALIZACIÓN">
+        </div>
+        <div class="profesionalizacion-texto aparecer">
+            <h1>PROFESIONALIZACIÓN</h1>
+            <p>La base de nuestra atención es la profesionalización continua de todos los que
+            integramos LERRETI, usando toda nuestra experiencia a favor de nuestros clientes
+            y dándoles la certeza de que son atendidos bajo criterios actualizados
+            en el campo de la informática y la contaduría pública principalmente.</p>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    const elementos = document.querySelectorAll('.aparecer, .rebote');
+
+    const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        }
+    });
+    }, { threshold: 0.2 });
+
+    elementos.forEach(el => observer.observe(el));
+</script>

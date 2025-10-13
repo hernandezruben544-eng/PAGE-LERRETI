@@ -1,0 +1,36 @@
+---
+import '../style/hoy.css';
+import '../style/animaciones.css';
+---
+
+<div class="hoy">
+    <div class="hoy-bloque aparecer">
+        <h1>LERRETI HOY</h1>
+        <img src="/otros/Logo-1.png" alt="logo" class="video-logo rebote">
+        <div class="video-container rebote">
+            <iframe
+                src="https://www.youtube.com/embed/Ps25fVigm3U"
+                title="Presentación LERRETI"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    const elementos = document.querySelectorAll('.aparecer, .rebote');
+
+    const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        }
+    });
+    }, { threshold: 0.2 });
+
+    elementos.forEach(el => observer.observe(el));
+</script>

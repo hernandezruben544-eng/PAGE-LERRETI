@@ -1,0 +1,174 @@
+  /* CONTENEDOR PRINCIPAL */
+  .BaseHead {
+    position: relative;
+    background-image: url("/images/contadores.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column; /* apila vertical cuadro + botón */
+    justify-content: center;
+    align-items: flex-end; /* todo alineado a la derecha */
+    padding: 40px 5%;
+    overflow: hidden;
+    z-index: 0;
+  }
+  .BaseHead::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 1;
+  }
+
+  .cuadro-blanco {
+    position: relative;
+    z-index: 2;
+    background-color: white;
+    border-radius: 30px;
+    padding: 40px 60px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    max-width: 900px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+  }
+
+  /* Logo */
+  .logo-dentro {
+    padding: 10px;
+    border-radius: 20px;
+    width: 180px;
+    height: auto;
+    flex-shrink: 0;
+    opacity: 0;
+    transform: translateX(50px); /* aparece desde la derecha */
+    transition: opacity 1s ease, transform 1s ease;
+  }
+  .logo-dentro.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  .logo-dentro.hidden {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+
+  /* Texto contenedor */
+  .texto-con-fondo {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    max-width: 400px;
+    opacity: 0;
+    transform: translateX(50px); /* también desde derecha */
+    transition: opacity 1s ease, transform 1s ease;
+  }
+  .texto-con-fondo.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  .texto-con-fondo.hidden {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+
+  /* Líneas fondo individual */
+  .linea-fondo {
+    background-color: white;
+    color: #000080;
+    border-radius: 20px;
+    box-sizing: border-box;
+    max-width: 200px;
+    padding: 8px 25px;
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 1s ease, transform 1s ease, background-color 1s ease, color 1s ease;
+  }
+  #linea2 {
+    padding: 8px 10px;
+    max-width: 220px;
+    margin-left: auto;
+  }
+  .linea-fondo.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  .linea-fondo.activo {
+    background-color: #000080;
+    color: white;
+  }
+
+  /* Wordpad style */
+  .wordpad-style {
+    font-size: 1.5rem;
+    font-weight: bold;
+    line-height: 0.8;
+    font-family: inherit;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    color: inherit;
+  }
+
+  /* Botón ver más */
+  .VerMasBtn {
+    position: relative;
+    z-index: 3;
+    margin-top: 20px; /* separacion debajo del cuadro */
+    background-color: #000080;
+    padding: 12px 24px;
+    border-radius: 20px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.25);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    align-self: flex-end; /* fuerza alineación derecha */
+  }
+  .VerMasBtn:hover {
+    filter: brightness(90%);
+    transform: scale(1.05);
+  }
+
+  .arrow-down-svg {
+    animation: bounce 1.5s infinite;
+  }
+
+.barra-texto {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  justify-content: space-between;
+  width: 100%;
+  background-color: #f1f1f1;
+  border-bottom: 1px solid #ccc;
+  z-index: 10;
+}
+
+.Mensaje {
+  flex: 1;
+  text-align: center;
+  padding: 10px 0;
+  cursor: pointer;
+  position: relative;
+  font-weight: bold;
+  color: #000080;
+}
+
+.linea-azul {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background-color: #000080;
+  transition: left 0.3s, width 0.3s;
+}

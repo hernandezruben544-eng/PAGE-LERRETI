@@ -1,0 +1,173 @@
+.NOVEDADES {
+  background-color: #f5f5f5;
+  padding: 60px 0;
+}
+
+.CUADRO {
+  position: relative;
+  width: 95%;
+  max-width: 900px;
+  height: 320px;
+  margin: 0 auto;
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  background-image: url('/images/textura.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.item-novedad {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease;
+  z-index: 0;
+  transform: translateZ(0);
+}
+
+
+.corte-imagen, .contenido-novedad {
+  width: 50%;
+}
+
+.item-novedad.visible {
+  opacity: 1;
+  z-index: 2;
+}
+
+.corte-imagen {
+  width: 60%;
+  height: 100%;
+  background-image: url('/images/textura.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+  z-index: 2;
+}
+
+.overlay-btn {
+  position:absolute;
+  inset: 0;
+  display: block;
+  background: transparent;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.overlay-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: var(--hover-img);
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.corte-imagen:hover .overlay-btn::after {
+  opacity: 0.3;
+}
+
+
+.contenido-novedad {
+  width: 40%;
+  clip-path: none;
+  padding: 3rem 2rem 2rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #000080;
+  position: relative;
+  z-index: 1;
+}
+
+.corte-imagen::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  pointer-events: none;
+  z-index: 3;
+}
+
+@media (max-width: 768px) {
+  .corte-imagen,
+  .corte-imagen::before,
+  .contenido-novedad {
+    clip-path: none;
+  }
+
+  .item-novedad {
+    flex-direction: column;
+  }
+
+  .corte-imagen {
+    width: 100%;
+    height: 200px;
+  }
+
+  .contenido-novedad {
+    width: 100%;
+    padding: 1.5rem;
+  }
+}
+
+
+.cuadro-con-botones {
+  position: relative;
+  width: 95%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+
+.btn-más {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 2rem;
+  color: #000080;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+  z-index: 10;
+}
+
+.btn-más:hover {
+  color: rgba(0, 0, 0, 0.612);
+}
+
+
+.item-novedad.especial h1 {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.item-novedad.especial p {
+  font-size: 14px;
+}
+
+.item-novedad.especial .bold {
+  font-weight: bold;
+  font-size: 15px;
+  font-family: 'Open Sans', sans-serif;
+}

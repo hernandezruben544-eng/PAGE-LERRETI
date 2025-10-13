@@ -1,0 +1,62 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header-herramientas.astro';
+import BaseHead from '../components/BaseHead-herramientas.astro';
+import Video from '../components/Videos.astro';
+import Footer from '../components/Footer.astro';
+import '../style/herramientas.css';
+---
+
+<Layout title="Herramientas | LERRETI">
+    <Header/>
+    <button id="scrollToTop" class="scroll-top-btn" style="display: none;" aria-label="Volver al inicio">
+        <span class="arrow-icon">↑</span>
+    </button>
+    <BaseHead/>
+    <Video/>
+    <Footer/>
+</Layout>
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  // ===== Header que desaparece =====
+  const header = document.querySelector('.simple-header');
+  const baseHead = document.querySelector('.BaseHead-herramientas');
+
+  if (header && baseHead) {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.intersectionRatio < 0.5) {
+          header.classList.remove('visible'); // Header desaparece cuando menos del 50% de BaseHead está visible
+        } else {
+          header.classList.add('visible');    // Header visible mientras al menos 50% de BaseHead está visible
+        }
+      },
+      { threshold: [0, 0.5, 1] }
+    );
+
+    observer.observe(baseHead);
+  }
+
+  // ===== Botón Scroll to BaseHead =====
+  const scrollToTopBtn = document.getElementById('scrollToTop');
+  if (scrollToTopBtn && baseHead) {
+
+    // Mostrar el botón cuando se haya pasado BaseHead
+    function toggleScrollButton() {
+      const rect = baseHead.getBoundingClientRect();
+      scrollToTopBtn.style.display = rect.bottom < 0 ? 'flex' : 'none';
+    }
+
+    window.addEventListener('scroll', toggleScrollButton);
+    window.addEventListener('load', toggleScrollButton);
+
+    // Scroll suave al hacer clic
+    scrollToTopBtn.addEventListener('click', () => {
+      baseHead.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+});
+</script>

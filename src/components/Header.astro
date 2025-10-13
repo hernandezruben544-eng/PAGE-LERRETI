@@ -1,0 +1,101 @@
+---
+// Aquí podrías incluir lógica si lo necesitas (por ejemplo, props)
+import {TITLE} from '../consts';
+import '../style/header.css';
+import '../style/global.css';
+---
+
+<header class="site-header visible">
+  <div class="menu-left">
+    <ul class="nav-menu-left">
+      <li class="menu-item">
+        <span class="menu-link">Nosotros</span>
+        <ul class="submenu">
+          <li class="submenu-header">Conoce a LERRETI</li>
+          <li><a href="/historia">Nuestra Historia</a></li>
+          <li><a href="/somos">Quiénes somos</a></li>
+          <li><a href="/profesionalizacion">Profesionalización</a></li>
+        </ul>
+      </li>
+      <li><a href="/#service" class="menu-link">Servicios</a></li>
+      <li><a href="/#principios" class="menu-link">Nuestros Principios</a></li>
+    </ul>
+  </div>
+
+  <div class="logo-banner">
+    <a href="/#"><img src={TITLE} alt="Logo" /></a>
+  </div>
+
+  <div class="menu-right">
+    <ul class="nav-menu-right">
+      <li><a href="/#squad" class="menu-link">Nuestro Equipo</a></li>
+      <li><a href="/Distinciones" class="menu-link">Distinciones</a></li>
+    </ul>
+  </div>
+</header>
+
+<div id="overlay" class="overlay"></div>
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const header = document.querySelector('.site-header');
+  const sectionInicio = document.getElementById('Inicio');
+  const navLinks = document.querySelectorAll('.nav-menu-left a, .nav-menu-right a');
+  const menuItem = document.querySelector('.menu-item');
+  const overlay = document.getElementById('overlay');
+
+  // Mostrar/ocultar header en sección Inicio
+  function toggleHeaderVisibility() {
+    if (!sectionInicio) return;
+    const rect = sectionInicio.getBoundingClientRect();
+    const isVisible = rect.bottom > 100 && rect.top < window.innerHeight;
+    header.classList.toggle('visible', isVisible);
+  }
+
+  // Marcar link activo según scroll
+  function highlightCurrentSection() {
+    const sections = ['Inicio', 'novedades', 'service', 'principios']
+      .map(id => document.getElementById(id))
+      .filter(Boolean);
+
+    let currentSectionId = '';
+    sections.forEach(section => {
+      const offset = section.offsetTop;
+      if (window.scrollY >= offset - 120) {
+        currentSectionId = section.id;
+      }
+    });
+
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href')?.replace('#', '');
+      link.classList.toggle('active', href === currentSectionId);
+    });
+  }
+
+  // Mostrar overlay al hacer hover en el menú
+  menuItem.addEventListener('mouseenter', () => {
+    overlay.classList.add('active');
+  });
+
+  menuItem.addEventListener('mouseleave', () => {
+    overlay.classList.remove('active');
+  });
+
+  overlay.addEventListener('mouseenter', () => {
+    overlay.classList.remove('active');
+  });
+
+  window.addEventListener('scroll', () => {
+    toggleHeaderVisibility();
+    highlightCurrentSection();
+  });
+
+  window.addEventListener('load', () => {
+    toggleHeaderVisibility();
+    highlightCurrentSection();
+  });
+});
+</script>
+

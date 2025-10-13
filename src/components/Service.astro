@@ -1,0 +1,60 @@
+---
+import '../style/service.css';
+import '../style/animaciones.css';
+---
+
+<div id="service" class="Service">
+  <h1 class="service-title aparecer">SERVICIOS</h1>
+  <p class="service-subtitle aparecer">En LERRETI ofrecemos soluciones integrales, optimizando el cuidado de nuestros clientes con una atención personalizada.</p>
+
+  <div class="servicio-bloques">
+
+    <div class="cuadro-servicio formacion-bg rebote">
+      <div class="contenido-servicio">
+        <div class="icono-circular">
+        </div>
+        <h2 class="titulo-servicio">FORMACIÓN DE PERSONAL</h2>
+        <p class="texto-servicio">Impartición de cursos y seminarios especializados.</p>
+      </div>
+      <a href="/servicios.html#formacion" class="btn-conocer-mas">Conocer más</a>
+    </div>
+
+    <div class="cuadro-servicio soporte-bg rebote">
+      <div class="contenido-servicio">
+        <div class="icono-circular-1">
+        </div>
+        <h2 class="titulo-servicio">SOPORTE TÉCNICO</h2>
+        <p class="texto-servicio">Asistencia administrativa y soporte informático remoto con relación a los sistemas comercializados por la empresa.</p>
+      </div>
+      <a href="/servicios.html#soporte" class="btn-conocer-mas">Conocer más</a>
+    </div>
+
+    <div class="cuadro-servicio software-bg rebote">
+      <div class="contenido-servicio">
+        <div class="icono-circular-2">
+          
+        </div>
+        <h2 class="titulo-servicio">SOFTWARE</h2>
+        <p class="texto-servicio">Creación, implementación, mantenimiento y arrendamiento de software especializado.</p>
+      </div>
+      <a href="/servicios" class="btn-conocer-mas">Conocer más</a>
+    </div>
+
+  </div>
+</div>
+
+
+<script>
+  const elementos = document.querySelectorAll('.aparecer, .rebote');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.2 });
+
+  elementos.forEach(el => observer.observe(el));
+</script>
+

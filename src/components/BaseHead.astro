@@ -1,0 +1,120 @@
+---
+import '../style/basehead.css';
+---
+<div id="Inicio" class="BaseHead">
+  <div class="cuadro-blanco">
+    <img src="/otros/Logo-1.png" alt="Logo Empresa" class="logo-dentro" id="logo" />
+
+    <div class="texto-con-fondo" id="textoConFondo">
+      <div class="linea-fondo" id="linea1">
+        <h1 class="wordpad-style">
+          <span class="line1">SOLUCIONES</span>
+        </h1>
+      </div>
+      <div class="linea-fondo" id="linea2">
+        <h1 class="wordpad-style">
+          <span class="line2">INTEGRALES</span>
+        </h1>
+      </div>
+    </div>
+  </div>
+
+  <button class="VerMasBtn" id="verMasBtn">
+    <span class="btn-text">Ver más</span>
+    <svg
+      class="arrow-down-svg"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      width="24"
+      height="24"
+      fill="none"
+      stroke="white"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </button>
+
+  <!-- Barra tipo navegador con texto simple -->
+  <div class="barra-texto" id="barra-novedades">
+    <span class="Mensaje active">LERRETI</span>
+    <span class="Mensaje">MISIÓN</span>
+    <span class="Mensaje">VISIÓN</span>
+    <span class="Mensaje">DOPPIA</span>
+    <span class="Mensaje">BILANCI</span>
+    <span class="Mensaje">CERTIFICACIONES</span>
+    <div class="linea-azul"></div>
+  </div>
+</div>
+
+<script>
+  function scrollToService() {
+    const service = document.querySelector("#service");
+    if (service) {
+      service.scrollIntoView({ behavior: "smooth" });
+    } else {
+      console.warn("Elemento #service no encontrado");
+    }
+  }
+  document.getElementById("verMasBtn").addEventListener("click", scrollToService);
+
+  const logo = document.getElementById('logo');
+  const texto = document.getElementById('textoConFondo');
+  const linea1 = document.getElementById('linea1');
+  const linea2 = document.getElementById('linea2');
+
+  function resetStates() {
+    logo.classList.remove('visible', 'hidden');
+    texto.classList.remove('visible', 'hidden');
+    linea1.classList.remove('visible', 'activo');
+    linea2.classList.remove('visible', 'activo');
+  }
+
+  function runAnimationCycle() {
+    resetStates();
+
+    // Paso 1: Mostrar logo (entrada)
+    setTimeout(() => {
+      logo.classList.add('visible');
+    }, 100);
+
+    // Paso 2: Mostrar texto y líneas mientras logo sigue visible
+    setTimeout(() => {
+      texto.classList.add('visible');
+      linea1.classList.add('visible');
+    }, 1200);
+
+    setTimeout(() => {
+      linea2.classList.add('visible');
+    }, 1700);
+
+    // Paso 3: Cambiar color/fondo línea 1
+    setTimeout(() => {
+      linea1.classList.add('activo');
+    }, 3200);
+
+    // Paso 4: Cambiar color/fondo línea 2
+    setTimeout(() => {
+      linea2.classList.add('activo');
+    }, 4700);
+
+    // Paso 5: Ocultar logo y texto (salida juntos)
+    setTimeout(() => {
+      logo.classList.remove('visible');
+      logo.classList.add('hidden');
+
+      texto.classList.remove('visible');
+      texto.classList.add('hidden');
+
+      linea1.classList.remove('activo', 'visible');
+      linea2.classList.remove('activo', 'visible');
+    }, 6200);
+  }
+
+  window.addEventListener('load', () => {
+    runAnimationCycle();
+    setInterval(runAnimationCycle, 7000);
+  });
+</script>

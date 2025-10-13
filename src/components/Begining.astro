@@ -1,0 +1,82 @@
+---
+import '../style/begining.css';
+import '../style/animaciones.css';
+---
+
+
+<section id="principios" class="principios">
+    <h1 class="principios-titulo aparecer">NUESTROS PRINCIPIOS</h1>
+
+  <div class="principios-bloques">
+    <div class="principio-cuadro rebote" data-bg="CONFIANZA.jpg">
+      <div class="principio-header">
+        <img src="confianza.png" alt="Logo Confianza"/>
+        <h2>CONFIANZA</h2>
+      </div>
+      <div class="principio-contenido">
+        <div class="overlay-1">
+          <p>Formamos un entorno de confianza con nuestros clientes...</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="principio-cuadro rebote" data-bg="RESPONSABILIDAD.jpg">
+      <div class="principio-header">
+        <img src="responsabilidad.png" alt="Logo Responsabilidad" />
+        <h2>RESPONSABILIDAD</h2>
+      </div>
+      <div class="principio-contenido">
+        <div class="overlay-1">
+          <p>Nos preparamos día a día para estar a la altura de lo que nuestros clientes necesitan.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="principio-cuadro rebote" data-bg="DISCIPLINA.jpg">
+      <div class="principio-header">
+        <img src="disciplina.png" alt="Logo Disciplina" />
+        <h2>DISCIPLINA</h2>
+      </div>
+      <div class="principio-contenido">
+        <div class="overlay-1">
+          <p>Contamos con mecanismos de control y mejora continua en nuestros servicios.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<script>
+  // ---- Animación de aparición / rebote al hacer scroll ----
+  const elementos = document.querySelectorAll('.aparecer, .rebote');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible'); // activa la animación CSS
+      }
+    });
+  }, { threshold: 0.2 });
+
+  elementos.forEach(el => observer.observe(el));
+
+  // ---- Transición de hover de cada cuadro ----
+  const tarjetas = document.querySelectorAll('.principio-cuadro');
+
+  tarjetas.forEach(tarjeta => {
+    const contenido = tarjeta.querySelector('.principio-contenido');
+    const imagen = tarjeta.dataset.bg;
+    contenido.style.backgroundImage = `url('${imagen}')`;
+
+    tarjeta.addEventListener('mouseenter', () => {
+      tarjetas.forEach(t => t.classList.remove('activa'));
+      tarjeta.classList.add('activa');
+    });
+
+    tarjeta.addEventListener('mouseleave', () => {
+      tarjeta.classList.remove('activa');
+    });
+  });
+</script>

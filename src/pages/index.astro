@@ -1,0 +1,123 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import BaseHead from '../components/BaseHead.astro';
+import Novedades from '../components/Novedades.astro';
+import Service from '../components/Service.astro';
+import Begining from '../components/Begining.astro';
+import Squad from '../components/Squad.astro';
+import Footer from '../components/Footer.astro';
+---
+<Layout title="LERRETI - Soluciones Integrales">
+  <Header />
+
+  <button id="scrollToTop" class="scroll-top-btn" style="display: none;" aria-label="Volver al inicio">
+    <span class="arrow-icon">↑</span>
+  </button>
+
+  <div class="notificacion-flotante" role="alert">
+    <button class="boton-cerrar-notificacion" aria-label="Cerrar notificación">X</button>
+    <img src="Doppia.png" alt="Notificación" class="notificacion-img-vertical" />
+    <h2 class="notificacion-titulo">¿Ya cuentas con una correcta gestión de bienes & recursos?</h2>
+    <p class="notificacion-texto">Conoce a doppia y a muchos más haciendo click en "Conocer más".</p>
+    <a href="/herramientas" class="boton-notificacion">Conocer más</a>
+  </div>
+
+  <button class="boton-reabrir-notificacion" style="display: none;">
+    Notificación
+  </button>
+
+  <BaseHead />
+  <Novedades />
+  <Service />
+  <Begining />
+  <Squad />
+  <Footer />
+</Layout>
+
+
+
+<script>
+// ===== Intersection Observer para animar secciones =====
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+});
+
+// Selecciona todas las secciones que quieras animar
+const seccionesAnimar = document.querySelectorAll('.squad, .principios, .service');
+seccionesAnimar.forEach(section => {
+  if (section) observer.observe(section);
+});
+
+// ===== Botón Scroll to Top =====
+const scrollToTopBtn = document.getElementById('scrollToTop');
+
+function toggleScrollButton() {
+  const triggerBottom = window.innerHeight * 0.9;
+
+  // Filtra solo secciones existentes
+  const secciones = ['service', 'principios', 'squad']
+    .map(id => document.getElementById(id))
+    .filter(sec => sec !== null);
+
+  // Comprueba si alguna sección está visible
+  const isVisible = secciones.some(sec => {
+    const top = sec.getBoundingClientRect().top;
+    return top < triggerBottom && top > -sec.offsetHeight;
+  });
+
+  scrollToTopBtn.style.display = isVisible ? 'flex' : 'none';
+}
+
+// Ejecuta al hacer scroll y al cargar la página
+window.addEventListener('scroll', toggleScrollButton);
+window.addEventListener('load', toggleScrollButton);
+
+// Scroll suave al inicio al hacer clic
+if (scrollToTopBtn) {
+  scrollToTopBtn.addEventListener('click', () => {
+    const inicio = document.getElementById('Inicio');
+    if (inicio) {
+      inicio.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+}
+
+
+window.addEventListener('scroll', toggleScrollButton);
+window.addEventListener('load', toggleScrollButton);
+
+// Scroll suave al inicio cuando se haga clic en el botón
+scrollToTopBtn.addEventListener('click', () => {
+  document.getElementById('Inicio').scrollIntoView({ behavior: 'smooth' });
+});
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const cerrarBtn = document.querySelector('.boton-cerrar-notificacion');
+    const notificacion = document.querySelector('.notificacion-flotante');
+    const reabrirBtn = document.querySelector('.boton-reabrir-notificacion');
+
+    cerrarBtn.addEventListener('click', () => {
+      notificacion.style.opacity = '0';
+      notificacion.style.pointerEvents = 'none';
+
+      setTimeout(() => {
+        notificacion.style.display = 'none';
+        reabrirBtn.style.display = 'block';
+      }, 300);
+    });
+
+    reabrirBtn.addEventListener('click', () => {
+      notificacion.style.display = 'flex';
+      setTimeout(() => {
+        notificacion.style.opacity = '1';
+        notificacion.style.pointerEvents = 'auto';
+      }, 10);
+    reabrirBtn.style.display = 'none';
+    });
+  });
+</script>
